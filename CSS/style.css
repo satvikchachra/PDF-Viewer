@@ -1,0 +1,48 @@
+*{
+    margin: 0;
+    padding: 0;
+
+}
+
+.top-bar{
+    background-color: #121212;
+    color: #fff;
+    padding: 1rem;
+    text-align: center;
+}
+
+.btn{
+    background-color: #6200EE;
+    color: #fff;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 0.7rem 2rem;
+}
+
+.btn:hover{
+    opacity: 0.9;
+}
+
+.page-info{
+    margin: 20px;
+}
+
+.error{
+    background-color: #B00020;
+    color: #fff;
+    padding: 1rem;
+    text-align: center;
+}
+
+.canvas-container{
+    text-align: center;
+    margin: 7px;
+    background-color: #F9F6F7;
+}
+
+canvas{
+    display: inline;
+    box-shadow: 2px 2px 8px;
+}
+
