@@ -5,7 +5,7 @@ let pdfDoc = null,
     pageIsPending = null,
     pageIsRendering = false;
 
-const scale = 1.0,
+const scale = 0.85,
     canvas = document.querySelector('#pdf-render'),
     ctx = canvas.getContext('2d');
 
@@ -81,7 +81,34 @@ pdfjsLib.getDocument(url).promise
         document.querySelector('#page-count').textContent = pdfDoc.numPages;
         renderPage(pageNum);
     }).catch((err) => {
-        console.log(err);
+
+        // Display error
+        const div = document.createElement('div');
+        div.className = "error";
+        div.appendChild(document.createTextNode(err.message));
+
+        // Insert before top-bar
+        const bdy = document.querySelector('body');
+        bdy.insertBefore(div, bdy.firstElementChild);
+        
+        // Remove top bar
+        document.querySelector('.top-bar').style.display = 'none';
+
+        // Remove canvas container
+        document.querySelector('.canvas-container').style.display = 'none';
+
+        // To center align
+        const ctr2 = document.createElement('center');
+
+        // Display error image
+        const img = document.createElement('img');
+
+        ctr2.appendChild(img);
+        const src = '../img/undraw_page_not_found.svg';
+        img.setAttribute("src",src);
+        img.setAttribute("height","250px");
+        img.setAttribute("width","250px");
+        bdy.appendChild(ctr2);
     });
 
 document.querySelector('#prev-btn').addEventListener('click', showPrevPage);
