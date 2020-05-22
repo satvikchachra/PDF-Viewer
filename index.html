@@ -11,19 +11,22 @@
 </head>
 
 <body>
-    <div class="top-bar">
-        <button class="btn" id="prev-btn">
-            <i class="fas fa-arrow-circle-left"></i> Prev Page
-        </button>
-        <button class="btn" id="next-btn">
-            Next Page <i class="fas fa-arrow-circle-right"></i>
-        </button>
-        <span class="page-info">
-            Page <span id="curr-page"></span> of <span id="page-count"></span>
-        </span>
+    <div class="canvas-container">
+        <canvas id="pdf-render"></canvas>
     </div>
 
-    <canvas id="pdf-render"></canvas>
+    <div class="top-bar">
+        <span class="page-info">
+            <b class="page-info">Page <span id="curr-page"></span> of <span id="page-count"> </b></span>
+        </span>
+
+        <button class="btn" id="prev-btn">
+            <b><i class="fas fa-arrow-circle-left"></i> Prev Page</b>
+        </button>
+        <button class="btn" id="next-btn">
+            <b>Next Page</b> <i class="fas fa-arrow-circle-right"></i>
+        </button>
+    </div>
 
     <script src="https://mozilla.github.io/pdf.js/build/pdf.js"></script>
     <script src="https://use.fontawesome.com/f307a533b4.js"></script>
