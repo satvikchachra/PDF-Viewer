@@ -11,22 +11,58 @@
 </head>
 
 <body>
+    <!-- Top Bar -->
+    <div class="top-bar">
+        <button class="page-btn" id="prev-btn-top">
+            <b><i class="fas fa-arrow-circle-left fa-lg"></i> Prev Page</b>
+        </button>
+
+        <span class="page-info">
+            <b class="page-info">Page <span id="curr-page-top"></span> of <span id="page-count-top"> </b></span>
+        </span>
+
+        <button class="page-btn" id="next-btn-top">
+            <b>Next Page</b> <i class="fas fa-arrow-circle-right fa-lg"></i>
+        </button>
+    </div>
+
+
+    <!-- Canvas container -->
     <div class="canvas-container">
         <canvas id="pdf-render"></canvas>
     </div>
 
-    <div class="top-bar">
-        <span class="page-info">
-            <b class="page-info">Page <span id="curr-page"></span> of <span id="page-count"> </b></span>
-        </span>
-
-        <button class="btn" id="prev-btn">
-            <b><i class="fas fa-arrow-circle-left"></i> Prev Page</b>
+    <div class="zoom-btn-container">
+        <button class="btn" id="zoom-in-btn">
+            <i class="fa fa-plus" aria-hidden="true"></i>
         </button>
-        <button class="btn" id="next-btn">
-            <b>Next Page</b> <i class="fas fa-arrow-circle-right"></i>
+
+        <button class="btn" id="zoom-out-btn">
+            <i class="fa fa-minus" aria-hidden="true"></i>
+        </button>
+
+        <button class="btn" id="reset-zoom-btn">
+            <i class="fa fa-square-o" aria-hidden="true"></i>
         </button>
     </div>
+
+
+    <!-- Bottom bar -->
+    <div class="bottom-bar">
+        <button class="page-btn" id="prev-btn-bottom">
+            <b><i class="fas fa-arrow-circle-left fa-lg"></i> Prev Page</b>
+        </button>
+
+        <span class="page-info">
+            <b class="page-info">Page <span id="curr-page-bottom"></span> of <span id="page-count-bottom"> </b></span>
+        </span>
+
+        <button class="page-btn" id="next-btn-bottom">
+            <b>Next Page</b> <i class="fas fa-arrow-circle-right fa-lg"></i>
+        </button>
+    </div>
+
+    <!-- Include javascript -->
 
     <script src="https://mozilla.github.io/pdf.js/build/pdf.js"></script>
     <script src="https://use.fontawesome.com/f307a533b4.js"></script>
