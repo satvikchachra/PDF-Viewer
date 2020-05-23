@@ -3,10 +3,10 @@ const url = '../pdf.pdf';
 let pdfDoc = null,
     pageNum = 1,
     pageIsPending = null,
-    pageIsRendering = false;
+    pageIsRendering = false,
+    scale = 0.459;
 
-const scale = 0.85,
-    canvas = document.querySelector('#pdf-render'),
+const canvas = document.querySelector('#pdf-render'),
     ctx = canvas.getContext('2d');
 
 // Render the page 
@@ -42,7 +42,9 @@ const renderPage = (num) => {
                 })
                 .catch(err => console.log(err));
 
-            document.querySelector('#curr-page').textContent = pageNum;
+            document.querySelector('#curr-page-top').textContent = pageNum;
+            document.querySelector('#curr-page-bottom').textContent = pageNum;
+
 
         })
         .catch(err => console.log(err));
@@ -75,10 +77,30 @@ const showNextPage = () => {
     }
 }
 
+const zoomIn = () => {
+    scale += 0.1;
+    renderPage(pageNum);
+    document.querySelector('.top-bar').style.display = 'block';
+    document.querySelector('.bottom-bar').style.display = 'none';
+}
+
+const zoomOut = () => {
+    scale -= 0.1;
+    renderPage(pageNum);
+    document.querySelector('.top-bar').style.display = 'block';
+    document.querySelector('.bottom-bar').style.display = 'none';
+}
+
+const resetZoom = () => {
+    scale = 0.459;
+    renderPage(pageNum);
+}
+
 pdfjsLib.getDocument(url).promise
     .then((pdfDoc_) => {
         pdfDoc = pdfDoc_;
-        document.querySelector('#page-count').textContent = pdfDoc.numPages;
+        document.querySelector('#page-count-top').textContent = pdfDoc.numPages;
+        document.querySelector('#page-count-bottom').textContent = pdfDoc.numPages;
         renderPage(pageNum);
     }).catch((err) => {
 
@@ -90,7 +112,7 @@ pdfjsLib.getDocument(url).promise
         // Insert before top-bar
         const bdy = document.querySelector('body');
         bdy.insertBefore(div, bdy.firstElementChild);
-        
+
         // Remove top bar
         document.querySelector('.top-bar').style.display = 'none';
 
@@ -105,11 +127,26 @@ pdfjsLib.getDocument(url).promise
 
         ctr2.appendChild(img);
         const src = '../img/undraw_page_not_found.svg';
-        img.setAttribute("src",src);
-        img.setAttribute("height","250px");
-        img.setAttribute("width","250px");
+        img.setAttribute("src", src);
+        img.setAttribute("height", "250px");
+        img.setAttribute("width", "250px");
         bdy.appendChild(ctr2);
+
+
+        // Hide buttons
+        document.querySelector('.zoom-btn-container').style.display = 'none';
+
+        // Hide bottom bar
+        document.querySelector('.bottom-bar').style.display = 'none';
+
     });
 
-document.querySelector('#prev-btn').addEventListener('click', showPrevPage);
-document.querySelector('#next-btn').addEventListener('click', showNextPage);
+document.querySelector('#prev-btn-bottom').addEventListener('click', showPrevPage);
+document.querySelector('#next-btn-bottom').addEventListener('click', showNextPage);
+
+document.querySelector('#prev-btn-top').addEventListener('click', showPrevPage);
+document.querySelector('#next-btn-top').addEventListener('click', showNextPage);
+
+document.querySelector('#zoom-in-btn').addEventListener('click', zoomIn);
+document.querySelector('#zoom-out-btn').addEventListener('click', zoomOut);
+document.querySelector('#reset-zoom-btn').addEventListener('click', resetZoom);
