@@ -9,15 +9,6 @@
     color: #fff;
     padding: 1rem;
     text-align: center;
-    display: none;
-}
-
-
-.bottom-bar {
-    background-color: #121212;
-    color: #fff;
-    padding: 1rem;
-    text-align: center;
 }
 
 .page-btn{
@@ -60,7 +51,6 @@ canvas{
     box-shadow: 6px 6px 15px;
     margin: 20px;
 }
-
 
 .zoom-btn-container {
     text-align: center;
