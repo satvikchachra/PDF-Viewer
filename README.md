@@ -4,6 +4,9 @@
 ### PDF-Viewer
 It is a custom PDF Viewer built with pdf.js.
 
+### Deployment Link
+<pre> <a href="https://pdf-viewer.satvikchachra.now.sh/"> View Live Demo </a> </pre>
+
 ## Features
 * Pagination
 * Zoom In/ Zoom Out
